@@ -20,6 +20,6 @@ interface QuotesDAO {
     @Delete
     suspend fun deleteQuote(quotes: Quotes)
 
-    @Query("SELECT * FROM motivational_quotes")
-    fun getQuote(): LiveData<List<Quotes>>
+    @Query("SELECT * FROM motivational_quotes ORDER BY RANDOM() LIMIT 1")
+    fun getQuote(): LiveData<Quotes>
 }

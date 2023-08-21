@@ -16,4 +16,5 @@ class MainViewModel(private val quotesRepo: QuotesRepo) : ViewModel() {
             quotesRepo.insertQuote(quote)
         }
     }
+
 }

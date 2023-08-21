@@ -1,8 +1,10 @@
 package com.example.quotesapp
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.quotesapp.databinding.ActivityMainBinding
 
@@ -81,8 +83,17 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.getQuote().observe(this) { quoteContents ->
             binding.quoteTV.text = quoteContents.message
         }
-
     }
+
+    fun share(view: View) {
+        ShareCompat.IntentBuilder(this)
+            .setText(binding.quoteTV.text.toString())
+            .setType("text/plain")
+            .setChooserTitle("Share With")
+            .startChooser()
+    }
+
+
 
 }
 
